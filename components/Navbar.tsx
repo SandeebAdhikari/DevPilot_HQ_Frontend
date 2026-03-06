@@ -54,9 +54,12 @@ const Navbar = () => {
   const handleMouseEnter = (idx: number) => setDropdownIndex(idx);
   const handleMouseLeave = () => setDropdownIndex(null);
   return (
-    <div className="border-b border-border relative">
-      <div className="flex justify-between items-center h-16 mx-16 text-secondary">
-        <h1 className="font-bold text-primary">DevPilot-HQ</h1>
+    <div className="relative border-b border-[rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,rgba(8,10,15,0.9),rgba(7,9,13,0.72))] backdrop-blur-xl">
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,transparent,rgba(255,255,255,0.06),transparent)] opacity-30" />
+      <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6 text-secondary md:px-10">
+        <h1 className="font-semibold tracking-[-0.01em] text-primary">
+          DevPilot-HQ
+        </h1>
         <div className="flex gap-5 text-sm">
           {NAV_ITEMS.map((nav, idx) => (
             <div
@@ -65,7 +68,10 @@ const Navbar = () => {
               onMouseEnter={() => handleMouseEnter(idx)}
               onMouseLeave={handleMouseLeave}
             >
-              <a href="" className="hover:scale-105 hover:transition-transform">
+              <a
+                href=""
+                className="rounded-md px-2 py-1 transition hover:bg-[rgba(255,255,255,0.05)] hover:text-primary"
+              >
                 {nav.label}
               </a>
               {dropdownIndex === idx && (
@@ -80,9 +86,11 @@ const Navbar = () => {
             </div>
           ))}
         </div>
-        <div className="flex text-sm gap-3">
-          <button className="cursor-pointer">Log in</button>
-          <button className="border border-secondary rounded-md px-2 py-1  hover:scale-105 cursor-pointer hover:text-primary hover:border-none">
+        <div className="flex gap-3 text-sm">
+          <button className="cursor-pointer rounded-md px-3 py-1 transition hover:bg-[rgba(255,255,255,0.05)] hover:text-primary">
+            Log in
+          </button>
+          <button className="cursor-pointer rounded-full border border-[rgba(165,180,252,0.34)] bg-[rgba(165,180,252,0.1)] px-3 py-1 text-primary transition hover:border-[rgba(165,180,252,0.5)] hover:bg-[rgba(165,180,252,0.16)]">
             Sign Up
           </button>
         </div>

@@ -64,7 +64,18 @@
 /* ---------------------------------- */
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(
+      1200px 520px at 50% -220px,
+      rgba(148, 163, 184, 0.1),
+      transparent 62%
+    ),
+    radial-gradient(
+      900px 380px at 20% 22%,
+      rgba(165, 180, 252, 0.06),
+      transparent 68%
+    ),
+    linear-gradient(180deg, #0a0b0f 0%, #090a0d 100%);
   color: var(--text-primary);
   font-family: var(--font-sans), ui-sans-serif, system-ui;
   -webkit-font-smoothing: antialiased;
@@ -92,9 +103,9 @@ body {
 
 * {
   transition:
-    background-color 150ms ease,
-    border-color 150ms ease,
-    color 150ms ease;
+    background-color 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease;
 }
 
 /* Ripple Cursor Styles */
@@ -103,10 +114,141 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--text-secondary) 20%, transparent);
-  box-shadow: 0 0 8px 2px
-    color-mix(in srgb, var(--text-secondary) 30%, transparent);
-  animation: ripple 2s infinite linear;
+  background: color-mix(in srgb, #c7d2fe 66%, transparent);
+  box-shadow: 0 0 8px 2px color-mix(in srgb, #c7d2fe 72%, transparent);
+  animation: ripple 1s infinite linear;
+}
+
+.window-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, #a5b4fc 20%, transparent),
+    inset 0 0 22px color-mix(in srgb, #a5b4fc 10%, transparent);
+  pointer-events: none;
+}
+
+.window-showcase-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      110% 80% at 50% 0%,
+      color-mix(in srgb, #c4b5fd 18%, transparent),
+      transparent 55%
+    ),
+    linear-gradient(
+      130deg,
+      color-mix(in srgb, #93c5fd 12%, transparent) 0%,
+      transparent 36%,
+      color-mix(in srgb, #a5b4fc 14%, transparent) 100%
+    );
+  opacity: 0.72;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.window-premium-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.window-premium-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, #ffffff 7%, transparent),
+    transparent 42%
+  );
+  pointer-events: none;
+}
+
+.window-premium-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -18% -55% -18%;
+  height: 72%;
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, #a5b4fc 20%, transparent),
+    transparent 70%
+  );
+  opacity: 0.34;
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.window-shell-track {
+  fill: none;
+  stroke: color-mix(in srgb, #94a3b8 24%, transparent);
+  stroke-width: 0.45;
+}
+
+.window-shell-snake {
+  fill: none;
+  stroke: color-mix(in srgb, #94a3b8 58%, transparent);
+  stroke-width: 0.45;
+  stroke-linecap: round;
+  stroke-dasharray: 56 344;
+  stroke-dashoffset: 0;
+  filter: drop-shadow(0 0 4px color-mix(in srgb, #94a3b8 12%, transparent));
+  animation: window-border-snake 3.2s linear infinite;
+}
+
+.window-hover-surface,
+.window-hover-input,
+.window-hover-button,
+.window-hover-option {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.window-hover-surface:hover,
+.window-hover-input:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, #a5b4fc 34%, var(--border));
+  box-shadow:
+    0 14px 30px color-mix(in srgb, #020617 76%, transparent),
+    0 0 0 1px color-mix(in srgb, #a5b4fc 18%, transparent);
+}
+
+.window-hover-input:hover {
+  background: color-mix(in srgb, #a5b4fc 6%, #0b0f17);
+}
+
+.window-hover-button:hover {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, #a5b4fc 10%, transparent);
+  box-shadow:
+    0 10px 24px color-mix(in srgb, #020617 78%, transparent),
+    0 0 0 1px color-mix(in srgb, #a5b4fc 18%, transparent);
+}
+
+.window-hover-option:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 10px 20px color-mix(in srgb, #020617 72%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, #a5b4fc 24%, transparent);
+}
+
+@keyframes window-border-snake {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -400;
+  }
 }
 
 @keyframes ripple {

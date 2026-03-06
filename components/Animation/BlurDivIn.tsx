@@ -15,7 +15,8 @@ const BlurDivIn: React.FC<BlurDivInProps> = ({ children, className }) => {
   return (
     <motion.div
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.2 }}
       transition={{ duration: 1 }}
       variants={variants}
       className={className}
